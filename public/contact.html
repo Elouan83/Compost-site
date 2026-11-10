@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact | SOLAÏ</title>
+<meta name="description" content="Contactez SOLAÏ : une question sur nos boissons, l’offre de lancement ou le salon.">
+<meta name="theme-color" content="#f58a07">
+<meta property="og:title" content="Contact | SOLAÏ">
+<meta property="og:description" content="Contactez SOLAÏ : une question sur nos boissons, l’offre de lancement ou le salon.">
+<meta property="og:image" content="assets/img/gamme.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="contact">
+<main id="contenu">
+<section class="titre-page"><div class="wrap"><span class="surtitre">On vous écoute</span><h1>Contact</h1></div></section>
+<section class="section"><div class="wrap deux" style="align-items:start">
+  <form class="f" data-form="contact">
+    <label>Nom<input name="nom" required autocomplete="name"></label>
+    <label>E-mail<input type="email" name="email" required autocomplete="email"></label>
+    <label>Sujet<select name="sujet"><option>Une question sur un produit</option><option>L’offre de lancement</option><option>Le salon</option><option>Devenir point de vente</option><option>Autre</option></select></label>
+    <label>Message<textarea name="message" rows="5" required minlength="10"></textarea></label>
+    <label class="case"><input type="checkbox" required><span>J’accepte que mes données soient utilisées pour traiter ma demande. Voir la <a href="confidentialite.html">politique de confidentialité</a>.</span></label>
+    <button class="btn">Envoyer</button>
+  </form>
+  <div><h2>Nos coordonnées</h2>
+    <p><strong>SOLAÏ</strong><br>37-39 rue Boissière<br>75116 Paris, France</p>
+    <p>Téléphone : <a href="tel:+33156621515">01 56 62 15 15</a><br>E-mail : <mark class="todo">[à compléter : adresse e-mail de contact]</mark></p>
+    <div class="encart">Vous êtes un magasin, une association étudiante ou un opérateur de distributeurs automatiques dans l’agglomération de Toulon ? Choisissez le sujet « Devenir point de vente ».</div></div>
+</div></section>
+</main>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

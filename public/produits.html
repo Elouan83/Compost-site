@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nos boissons — Essentiel et Évasion | SOLAÏ</title>
+<meta name="description" content="Les cinq boissons SOLAÏ au format 33 cl : Essentiel Pomme et Orange (2,50 €), Évasion Brésil, Japon et Madagascar (2,90 €).">
+<meta name="theme-color" content="#f58a07">
+<meta property="og:title" content="Nos boissons — Essentiel et Évasion | SOLAÏ">
+<meta property="og:description" content="Les cinq boissons SOLAÏ au format 33 cl : Essentiel Pomme et Orange (2,50 €), Évasion Brésil, Japon et Madagascar (2,90 €).">
+<meta property="og:image" content="assets/img/gamme.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="produits">
+<main id="contenu">
+<section class="titre-page"><div class="wrap"><span class="surtitre">La boutique</span><h1>Nos boissons</h1><p class="chapo" style="margin:.6em 0 0;color:var(--encre)">Cinq références, deux gammes, un même format de 33 cl.</p></div></section>
+<section class="section" style="padding-top:20px"><div class="wrap">
+  <div class="filtres" role="group" aria-label="Filtrer par gamme"><button data-f="tous" aria-pressed="true">Toutes</button><button data-f="Essentiel" aria-pressed="false">Essentiel</button><button data-f="Évasion" aria-pressed="false">Évasion</button></div>
+  <div class="grille" data-grille="tous"></div>
+  <p class="note" style="margin-top:26px">Prix TTC à l’unité, hors frais de livraison. Visuels de maquette, non contractuels.</p>
+</div></section>
+<script>addEventListener("DOMContentLoaded",()=>{const g=new URLSearchParams(location.search).get("g");if(g)document.querySelector(`.filtres [data-f="${g}"]`)?.click()})</script>
+</main>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
