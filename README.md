@@ -34,8 +34,7 @@ Puis ouvrir http://localhost:8000
    ```
 2. Dans le dossier du projet :
    ```
-   firebase deploy --only hosting --project IDENTIFIANT_DU_PROJET
+   firebase deploy --only hosting
    ```
-   `IDENTIFIANT_DU_PROJET` est l'identifiant du projet Firebase (visible dans la console Firebase, Paramètres du projet).
 
 L'adresse du site s'affiche à la fin de la commande (`Hosting URL`).
