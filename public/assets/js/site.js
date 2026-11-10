@@ -129,9 +129,9 @@
 
   /* ---------- Cartes produit ---------- */
   function carte(p) {
-    return `<article class="carte reveler" style="--c:${p.couleur}" data-gamme="${p.gamme}">
+    return `<article class="carte reveler" style="--c:${p.couleur};--t:${p.teinte}" data-gamme="${p.gamme}">
       ${p.id === offre.produit ? `<span class="badge">${offre.libelle}</span>` : ""}
-      <div class="pastille" style="background:${p.teinte}"><img src="assets/img/${p.id}-face.webp" alt="SOLAÏ ${p.gamme} ${p.nom}, contenant rond de 33 cl" loading="lazy" width="564" height="563"></div>
+      <div class="pastille"><img src="assets/img/${p.id}-face.webp" alt="SOLAÏ ${p.gamme} ${p.nom}, contenant rond de 33 cl" loading="lazy" width="564" height="563"></div>
       <span class="gamme">${p.gamme}</span>
       <h3><a href="produit.html?id=${p.id}">${p.nom}</a></h3>
       <p class="saveurs">${p.saveurs.join(" · ")}</p>
@@ -157,9 +157,7 @@
     fiche.style.setProperty("--c", p.couleur); fiche.style.setProperty("--teinte-produit", p.teinte);
     fiche.innerHTML = `
       <div class="fiche-visuel">
-        <div class="pastille"><img data-vue src="assets/img/${p.id}-face.webp" alt="SOLAÏ ${p.gamme} ${p.nom}, face avant" width="564" height="563"></div>
-        <div class="vues"><button aria-pressed="true" data-v="face">Face avant</button><button aria-pressed="false" data-v="dos">Face arrière</button></div>
-        <p class="note centre" style="margin-top:10px">Visuels de maquette, non contractuels.</p>
+        <div class="pastille"><img data-vue src="assets/img/${p.id}-face.webp" alt="SOLAÏ ${p.gamme} ${p.nom}, contenant rond de 33 cl" width="564" height="563"></div>
       </div>
       <div>
         <span class="gamme">Gamme ${p.gamme}</span>
@@ -183,7 +181,7 @@
       </div>`;
     let q = 1;
     $$("[data-q]", fiche).forEach(b => b.onclick = () => { q = Math.max(1, Math.min(24, q + +b.dataset.q)); $("[data-qte]", fiche).textContent = q; $(".achat [data-ajout]", fiche).dataset.qte = q; });
-    $$("[data-v]", fiche).forEach(b => b.onclick = () => { $$("[data-v]", fiche).forEach(x => x.setAttribute("aria-pressed", x === b)); const i = $("[data-vue]", fiche); i.src = `assets/img/${p.id}-${b.dataset.v}.webp`; i.alt = `SOLAÏ ${p.gamme} ${p.nom}, face ${b.dataset.v === "dos" ? "arrière avec mentions" : "avant"}`; });
+    const ban = $("[data-banniere]"); if (ban) ban.innerHTML = `<img class="banniere" src="assets/img/ban-${p.banniere}.jpg" alt="Gamme ${p.gamme} : SOLAÏ ${p.nom}" width="1194" height="669">`;
     const fil = $("[data-fil]"); if (fil) fil.textContent = `${p.gamme} ${p.nom}`;
     const autres = $("[data-autres]"); if (autres) autres.innerHTML = SOLAI.produits.filter(x => x.id !== p.id).slice(0, 4).map(carte).join("");
   }
@@ -202,28 +200,22 @@
   });
   $$("[data-petales]").forEach(z => { if (matchMedia("(prefers-reduced-motion:reduce)").matches) return; for (let i = 0; i < 14; i++) { const s = document.createElement("i"); s.className = "petale"; s.style.left = Math.random() * 110 + "%"; s.style.animationDuration = 6 + Math.random() * 8 + "s"; s.style.animationDelay = -Math.random() * 10 + "s"; z.append(s); } });
 
-  /* ---------- Quiz « Quelle SOLAÏ est faite pour vous ? » ---------- */
-  const quiz = $("[data-quiz]");
-  if (quiz) {
-    const Q = [
-      ["Votre pause idéale, c’est…", [["Un classique qui ne déçoit jamais", { orange: 2, pomme: 2 }], ["Une saveur que je ne connais pas encore", { japon: 2, bresil: 2, madagascar: 1 }], ["Quelque chose de gourmand", { madagascar: 2, japon: 1 }]]],
-      ["Côté fruits, vous êtes plutôt…", [["Agrumes", { orange: 3 }], ["Fruits du verger", { pomme: 3 }], ["Fruits rouges et fleurs", { japon: 3 }], ["Fruits exotiques", { bresil: 2, madagascar: 2 }]]],
-      ["Si vous partiez demain ?", [["Sous les cerisiers en fleurs", { japon: 3 }], ["Sur une plage, palmiers en vue", { bresil: 3 }], ["Au pied des baobabs", { madagascar: 3 }], ["Je reste ici, au soleil", { orange: 2, pomme: 2 }]]]
-    ];
-    let i = 0, score = {};
-    (function etape() {
-      if (i >= Q.length) {
-        const id = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0], p = P(id);
-        quiz.innerHTML = `<div class="resultat"><div class="pastille" style="background:${p.teinte}"><img src="assets/img/${id}-face.webp" alt="SOLAÏ ${p.gamme} ${p.nom}"></div>
-          <div><span class="surtitre" style="color:var(--soleil)">Votre SOLAÏ</span><h3 style="font-size:2.2rem">${p.gamme} ${p.nom}</h3><p>${p.court}</p>
-          <div class="ligne"><a class="btn" href="produit.html?id=${id}">Voir la fiche</a><button class="btn clair" data-ajout="${id}">Ajouter au panier · ${euro(p.prix)}</button><button class="btn clair" data-rejouer>Rejouer</button></div></div></div>`;
-        $("[data-rejouer]", quiz).onclick = () => { i = 0; score = {}; etape(); };
-        return;
-      }
-      quiz.innerHTML = `<div class="progres"><i style="width:${i / Q.length * 100}%"></i></div><h3>${i + 1}/${Q.length} — ${Q[i][0]}</h3><div class="reponses">${Q[i][1].map((r, k) => `<button data-r="${k}">${r[0]}</button>`).join("")}</div>`;
-      $$("[data-r]", quiz).forEach(b => b.onclick = () => { for (const [k, v] of Object.entries(Q[i][1][b.dataset.r][1])) score[k] = (score[k] || 0) + v; i++; etape(); });
-    })();
-  }
+  /* ---------- Carrousel des visuels ---------- */
+  $$("[data-carrousel]").forEach(c => {
+    const piste = $(".piste", c), n = piste.children.length, pts = $(".points", c);
+    let i = 0, t;
+    pts.innerHTML = [...piste.children].map((_, k) => `<button aria-label="Visuel ${k + 1} sur ${n}"></button>`).join("");
+    const aller = k => { i = (k + n) % n; piste.scrollTo({ left: piste.clientWidth * i, behavior: "smooth" }); maj(); };
+    const maj = () => $$("button", pts).forEach((b, k) => b.setAttribute("aria-current", k === i));
+    $$("button", pts).forEach((b, k) => b.onclick = () => { aller(k); relance(); });
+    $(".prec", c).onclick = () => { aller(i - 1); relance(); };
+    $(".suiv", c).onclick = () => { aller(i + 1); relance(); };
+    piste.addEventListener("scroll", () => { const k = Math.round(piste.scrollLeft / piste.clientWidth); if (k !== i) { i = k; maj(); } }, { passive: true });
+    const auto = !matchMedia("(prefers-reduced-motion:reduce)").matches;
+    const relance = () => { clearInterval(t); if (auto) t = setInterval(() => aller(i + 1), 5000); };
+    c.addEventListener("mouseenter", () => clearInterval(t)); c.addEventListener("mouseleave", relance);
+    maj(); relance();
+  });
 
   /* ---------- Apparition au défilement ---------- */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("vu"); io.unobserve(e.target); } }), { threshold: .12 });

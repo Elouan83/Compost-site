@@ -16,28 +16,32 @@
 </head>
 <body data-page="accueil">
 <main id="contenu">
-<section class="heros"><div class="soleil" aria-hidden="true"></div><div class="wrap">
-  <div>
-    <span class="surtitre" style="color:#7a2e00">Boissons fruitées artisanales · sans alcool · 33 cl</span>
+<section class="accueil"><div class="wrap">
+  <div class="accueil-tete">
+    <img class="logo" src="assets/img/logo.png" alt="SOLAÏ" width="561" height="505">
+    <div><span class="surtitre">Boissons fruitées artisanales · sans alcool · 33 cl</span>
     <h1>Du soleil à chaque <em>gorgée.</em></h1>
-    <p>Des saveurs familières avec Essentiel, des associations à découvrir avec Évasion. Une pause fruitée, où que vous soyez.</p>
-    <div class="actions"><a class="btn vert" href="produits.html">Découvrir nos boissons</a><a class="btn clair" href="#quiz">Trouver ma SOLAÏ</a></div>
+    <p class="chapo">Des saveurs familières avec Essentiel, des associations à découvrir avec Évasion.</p>
+    <div class="actions"><a class="btn" href="produits.html">Découvrir nos boissons</a><a class="btn clair" href="offre.html">Offre de lancement</a></div></div>
   </div>
-  <div class="heros-visuel"><img class="logo" src="assets/img/logo.png" alt="" width="561" height="505"><div class="pastille canette" style="background:#ffe2b0"><img src="assets/img/orange-face.webp" alt="SOLAÏ Essentiel Orange, contenant rond de 33 cl" width="564" height="563"></div></div>
+  <div class="carrousel" data-carrousel aria-roledescription="carrousel" aria-label="Les gammes SOLAÏ">
+    <div class="piste">
+      <a class="diapo" href="produits.html?g=Essentiel"><img src="assets/img/ban-essentiel.jpg" alt="Gamme Essentiel : SOLAÏ Orange et SOLAÏ Pomme" width="1194" height="669"><span>Gamme Essentiel · Orange et Pomme</span></a>
+      <a class="diapo" href="produit.html?id=japon"><img src="assets/img/ban-japon.jpg" alt="Gamme Évasion : SOLAÏ Japon, fraise, litchi, sakura" width="1194" height="669" loading="lazy"><span>Évasion Japon · Fraise, litchi, sakura</span></a>
+      <a class="diapo" href="produit.html?id=bresil"><img src="assets/img/ban-bresil.jpg" alt="Gamme Évasion : SOLAÏ Brasil, açaï et passion" width="1194" height="669" loading="lazy"><span>Évasion Brésil · Açaï, passion</span></a>
+      <a class="diapo" href="produit.html?id=madagascar"><img src="assets/img/ban-madagascar.jpg" alt="Gamme Évasion : SOLAÏ Madagascar, vanille, ananas, mangue" width="1194" height="669" loading="lazy"><span>Évasion Madagascar · Vanille, ananas, mangue</span></a>
+    </div>
+    <button class="fleche prec" aria-label="Visuel précédent">‹</button><button class="fleche suiv" aria-label="Visuel suivant">›</button>
+    <div class="points"></div>
+  </div>
 </div></section>
 <div class="defile" aria-hidden="true"><div><span>Pomme</span>☀<span>Orange</span>☀<span>Açaï · Passion</span>☀<span>Fraise · Litchi · Sakura</span>☀<span>Vanille · Ananas · Mangue</span>☀<span>Pomme</span>☀<span>Orange</span>☀<span>Açaï · Passion</span>☀<span>Fraise · Litchi · Sakura</span>☀<span>Vanille · Ananas · Mangue</span>☀<span>Pomme</span>☀<span>Orange</span>☀<span>Açaï · Passion</span>☀<span>Fraise · Litchi · Sakura</span>☀<span>Vanille · Ananas · Mangue</span>☀<span>Pomme</span>☀<span>Orange</span>☀<span>Açaï · Passion</span>☀<span>Fraise · Litchi · Sakura</span>☀<span>Vanille · Ananas · Mangue</span>☀</div></div>
 
 <section class="section"><div class="wrap">
-  <div class="centre"><span class="surtitre">Deux gammes, une promesse</span><h2>Rester ici ou partir loin ?</h2><p class="chapo">Chacun explore SOLAÏ à son rythme : commencez par un goût que vous connaissez, puis laissez-vous tenter par une destination.</p></div>
-  <div class="duo" style="margin-top:36px">
-    <article class="ess reveler"><span class="surtitre">Gamme Essentiel</span><h3>Les saveurs familières</h3><p>Deux jus sans pulpe, pomme et orange, à la texture fluide. 2,50 € TTC les 33 cl.</p><a class="btn vert petit" href="produits.html?g=Essentiel">Voir Essentiel</a><img src="assets/img/pomme-face.webp" alt="" loading="lazy"></article>
-    <article class="eva reveler"><span class="surtitre">Gamme Évasion</span><h3>Le voyage en trois escales</h3><p>Brésil, Japon, Madagascar : trois boissons aux fruits, trois univers. 2,90 € TTC les 33 cl.</p><a class="btn clair petit" href="produits.html?g=Évasion">Voir Évasion</a><img src="assets/img/bresil-face.webp" alt="" loading="lazy"></article>
-  </div>
-</div></section>
-
-<section class="section" style="padding-top:0"><div class="wrap">
-  <span class="surtitre">La gamme</span><h2>Nos cinq boissons</h2>
-  <div class="grille" data-grille="tous" style="margin-top:26px"></div>
+  <div class="gamme-tete reveler"><div><span class="surtitre">Gamme Essentiel</span><h2>Les saveurs familières</h2></div><p>Deux jus sans pulpe, pomme et orange, à la texture fluide. 2,50 € TTC les 33 cl.</p></div>
+  <div class="grille" data-grille="Essentiel"></div>
+  <div class="gamme-tete reveler" style="margin-top:70px"><div><span class="surtitre">Gamme Évasion</span><h2>Le voyage en trois escales</h2></div><p>Brésil, Japon, Madagascar : trois boissons aux fruits, trois univers. 2,90 € TTC les 33 cl.</p></div>
+  <div class="grille" data-grille="Évasion"></div>
 </div></section>
 <section class="section"><div class="wrap">
 <div class="offre reveler" data-petales>
@@ -53,12 +57,16 @@
     <div class="ligne"><button class="btn" style="--accent:var(--rouge);--accent-fonce:#7a1711" data-ajout="japon" data-qte="3">Ajouter 3 Évasion Japon</button><a class="btn clair" href="offre.html">Détails de l’offre</a></div>
   </div>
 </div></div></section>
-<section class="section" id="quiz"><div class="wrap"><div class="quiz reveler">
-  <span class="surtitre" style="color:var(--soleil)">Le quiz</span><h2>Quelle SOLAÏ est faite pour vous ?</h2><p>Trois questions, une boisson.</p>
-  <div data-quiz></div>
-</div></div></section>
-
 <section class="section"><div class="wrap">
+  <div class="centre"><span class="surtitre">Les moments SOLAÏ</span><h2>Une pause, trois occasions</h2><p class="chapo">Un format individuel de 33 cl, à ouvrir sans outil, pensé pour les moments simples.</p></div>
+  <div class="moments">
+    <article class="reveler" style="--f:#f8d66a;--g:#f29a5c"><span>01</span><h3>Entre deux cours</h3><p>Une pause fruitée, vite ouverte, entre deux amphis.</p><img src="assets/img/orange-face.webp" alt="" loading="lazy"></article>
+    <article class="reveler" style="--f:#f4c9c2;--g:#e58f8a"><span>02</span><h3>Au déjeuner</h3><p>Une boisson individuelle pour accompagner le repas.</p><img src="assets/img/japon-face.webp" alt="" loading="lazy"></article>
+    <article class="reveler clair" style="--f:#9a2463;--g:#5e0f3a"><span>03</span><h3>Entre amis</h3><p>Chacun sa saveur, chacun sa destination.</p><img src="assets/img/bresil-face.webp" alt="" loading="lazy"></article>
+  </div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="wrap">
   <div class="centre"><span class="surtitre">Nos valeurs</span><h2>Ce qui nous anime</h2></div>
   <div class="valeurs" style="margin-top:30px">
     <div class="valeur reveler"><div class="ico">😋</div><h3>Le plaisir</h3><p>Des boissons que l’on choisit d’abord pour leur goût.</p></div>
