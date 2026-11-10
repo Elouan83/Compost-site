@@ -79,7 +79,7 @@
     const ids = Object.keys(panier);
     $("[data-panier]").innerHTML = ids.length ? ids.map(id => { const p = P(id); return `
       <div class="ligne-panier">
-        <div class="pastille"><img src="assets/img/${id}-face.jpg" alt=""></div>
+        <div class="pastille"><img src="assets/img/${id}-face.webp" alt=""></div>
         <div><b>${p.gamme} ${p.nom}</b><span class="note">${euro(p.prix)} · 33 cl</span>
           <div class="qte" style="margin-top:6px"><button data-moins="${id}" aria-label="Retirer une ${p.nom}">−</button><output>${panier[id]}</output><button data-plus="${id}" aria-label="Ajouter une ${p.nom}">+</button></div></div>
         <div><b>${euro(p.prix * panier[id])}</b><button data-suppr="${id}" class="note" style="border:0;background:none;cursor:pointer;text-decoration:underline">Retirer</button></div>
@@ -131,7 +131,7 @@
   function carte(p) {
     return `<article class="carte reveler" style="--c:${p.couleur}" data-gamme="${p.gamme}">
       ${p.id === offre.produit ? `<span class="badge">${offre.libelle}</span>` : ""}
-      <div class="pastille" style="background:${p.teinte}"><img src="assets/img/${p.id}-face.jpg" alt="SOLAÏ ${p.gamme} ${p.nom}, contenant rond de 33 cl" loading="lazy" width="564" height="563"></div>
+      <div class="pastille" style="background:${p.teinte}"><img src="assets/img/${p.id}-face.webp" alt="SOLAÏ ${p.gamme} ${p.nom}, contenant rond de 33 cl" loading="lazy" width="564" height="563"></div>
       <span class="gamme">${p.gamme}</span>
       <h3><a href="produit.html?id=${p.id}">${p.nom}</a></h3>
       <p class="saveurs">${p.saveurs.join(" · ")}</p>
@@ -157,7 +157,7 @@
     fiche.style.setProperty("--c", p.couleur); fiche.style.setProperty("--teinte-produit", p.teinte);
     fiche.innerHTML = `
       <div class="fiche-visuel">
-        <div class="pastille"><img data-vue src="assets/img/${p.id}-face.jpg" alt="SOLAÏ ${p.gamme} ${p.nom}, face avant" width="564" height="563"></div>
+        <div class="pastille"><img data-vue src="assets/img/${p.id}-face.webp" alt="SOLAÏ ${p.gamme} ${p.nom}, face avant" width="564" height="563"></div>
         <div class="vues"><button aria-pressed="true" data-v="face">Face avant</button><button aria-pressed="false" data-v="dos">Face arrière</button></div>
         <p class="note centre" style="margin-top:10px">Visuels de maquette, non contractuels.</p>
       </div>
@@ -183,7 +183,7 @@
       </div>`;
     let q = 1;
     $$("[data-q]", fiche).forEach(b => b.onclick = () => { q = Math.max(1, Math.min(24, q + +b.dataset.q)); $("[data-qte]", fiche).textContent = q; $(".achat [data-ajout]", fiche).dataset.qte = q; });
-    $$("[data-v]", fiche).forEach(b => b.onclick = () => { $$("[data-v]", fiche).forEach(x => x.setAttribute("aria-pressed", x === b)); const i = $("[data-vue]", fiche); i.src = `assets/img/${p.id}-${b.dataset.v}.jpg`; i.alt = `SOLAÏ ${p.gamme} ${p.nom}, face ${b.dataset.v === "dos" ? "arrière avec mentions" : "avant"}`; });
+    $$("[data-v]", fiche).forEach(b => b.onclick = () => { $$("[data-v]", fiche).forEach(x => x.setAttribute("aria-pressed", x === b)); const i = $("[data-vue]", fiche); i.src = `assets/img/${p.id}-${b.dataset.v}.webp`; i.alt = `SOLAÏ ${p.gamme} ${p.nom}, face ${b.dataset.v === "dos" ? "arrière avec mentions" : "avant"}`; });
     const fil = $("[data-fil]"); if (fil) fil.textContent = `${p.gamme} ${p.nom}`;
     const autres = $("[data-autres]"); if (autres) autres.innerHTML = SOLAI.produits.filter(x => x.id !== p.id).slice(0, 4).map(carte).join("");
   }
@@ -214,7 +214,7 @@
     (function etape() {
       if (i >= Q.length) {
         const id = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0], p = P(id);
-        quiz.innerHTML = `<div class="resultat"><div class="pastille" style="background:${p.teinte}"><img src="assets/img/${id}-face.jpg" alt="SOLAÏ ${p.gamme} ${p.nom}"></div>
+        quiz.innerHTML = `<div class="resultat"><div class="pastille" style="background:${p.teinte}"><img src="assets/img/${id}-face.webp" alt="SOLAÏ ${p.gamme} ${p.nom}"></div>
           <div><span class="surtitre" style="color:var(--soleil)">Votre SOLAÏ</span><h3 style="font-size:2.2rem">${p.gamme} ${p.nom}</h3><p>${p.court}</p>
           <div class="ligne"><a class="btn" href="produit.html?id=${id}">Voir la fiche</a><button class="btn clair" data-ajout="${id}">Ajouter au panier · ${euro(p.prix)}</button><button class="btn clair" data-rejouer>Rejouer</button></div></div></div>`;
         $("[data-rejouer]", quiz).onclick = () => { i = 0; score = {}; etape(); };
